@@ -178,7 +178,7 @@ jobs:
     runs-on: parity-default
     if: ${{ needs.set-up-binaries.outputs.count != '0' }}
     needs: [ validate-inputs, set-up-binaries ]
-    environment: release
+    environment: weekly
     strategy:
       matrix:
         binary: ${{ fromJson(needs.set-up-binaries.outputs.binaries) }}

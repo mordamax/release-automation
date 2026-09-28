@@ -146,7 +146,7 @@ jobs:
 
   publish-release-draft:
     runs-on: ubuntu-latest
-    environment: release
+    environment: weekly
     needs: [ validate-inputs ]
     outputs:
       release_url: ${{ steps.create-release.outputs.html_url }}
@@ -250,7 +250,7 @@ jobs:
     # if: ${{ inputs.crates_only == false && inputs.no_runtimes == false }}
     if: ${{ needs.collect-artifacts.outputs.runtime_count != '0' }}
     needs: [ validate-inputs, collect-artifacts, publish-release-draft ]
-    environment: release
+    environment: weekly
     continue-on-error: true
     runs-on: ubuntu-latest
     strategy:
@@ -321,7 +321,7 @@ jobs:
     # if: ${{ inputs.crates_only == false }}
     if: ${{ needs.collect-artifacts.outputs.binary_count != '0' }}
     needs: [ validate-inputs, collect-artifacts, publish-release-draft ]
-    environment: release
+    environment: weekly
     continue-on-error: true
     runs-on: ubuntu-latest
     strategy:

@@ -76,7 +76,7 @@ jobs:
     runs-on: ${{ needs.setup.outputs.RUNNER }}
     container:
       image: ${{ needs.setup.outputs.IMAGE }}
-    environment: release
+    environment: weekly
     strategy:
       # One binary failing must not cancel the rest of the matrix: a single flaky
       # runner would otherwise take out the whole build stage, which then skips the
@@ -177,7 +177,7 @@ jobs:
   build-macos-rc:
     if: ${{ inputs.target == 'aarch64-apple-darwin' }}
     runs-on: parity-macos
-    environment: release
+    environment: weekly
     strategy:
       # One binary failing must not cancel the rest of the matrix: a single flaky
       # runner would otherwise take out the whole build stage, which then skips the
